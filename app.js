@@ -2,8 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-let port = 3000;
-
+let port = process.env.PORT;
 if(port == null || port == "") {
   port = 8000;
 }

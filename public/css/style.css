@@ -1,0 +1,63 @@
+:root {
+  --primary-font: 1rem/1.5rem 'Roboto Mono', monospace;
+  --primary-border: 1px solid #000;
+}
+
+::selection {
+  color: #fff;
+  background: #000;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+}
+
+header {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 10vh;
+  background: #fff;
+  font: var(--primary-font);
+  font-weight: 700;
+  line-height: 10vh;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: var(--primary-border);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20vh;
+  line-height: 20vh;
+  text-align: center;
+  background: #fff;
+  border-top: var(--primary-border);
+}
+
+a {
+  text-decoration: none;
+}
+
+footer a {
+  padding-bottom: 0.3rem;
+  color: #000;
+  border-bottom: 1px solid #000;
+  transition: all 0.2s;
+}
+
+footer a:hover {
+  color: rgb(100,100,100);
+  padding-bottom: 0.5rem;
+}
+
+.page-container {
+  position: relative;
+  min-height: 90vh;
+  padding-bottom: 10vh;
+  font: var(--primary-font);
+  overflow: auto;
+}

@@ -1,0 +1,48 @@
+input, textarea {
+  width: 75%;
+  padding: 0.5rem 1rem;
+  font: var(--primary-font);
+  outline: none;
+  border: var(--primary-border);
+  resize: none;
+  transition: all 0.2s;
+}
+
+input:focus, textarea:focus {
+  transform: scale(1.05);
+}
+
+input[type="submit"] {
+  width: 100%;
+  margin-top: 1rem;
+  background: #fff;
+  border: var(--primary-border);
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  color: #fff;
+  background: #000;
+  transform: scale(1.05);
+}
+
+label {
+  margin: 1rem 1rem 1rem 0;
+  font: var(--primary-font);
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  width: 50%;
+  margin: 20vh auto 20vh auto;
+}
+
+.form-item {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+}

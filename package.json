@@ -1,0 +1,14 @@
+{
+  "name": "vrt-site",
+  "version": "0.1.0",
+  "description": "A tool created to observe connections between visual works across time periods.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Arimit Bhattacharya",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

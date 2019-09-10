@@ -27,6 +27,10 @@ header {
   border-bottom: var(--primary-border);
 }
 
+header a {
+  color: #000;
+}
+
 footer {
   position: absolute;
   bottom: 0;

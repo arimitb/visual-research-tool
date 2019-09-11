@@ -65,3 +65,16 @@ footer a:hover {
   font: var(--primary-font);
   overflow: auto;
 }
+
+@media only screen and (max-width: 768px) {
+  header {
+    font-size: 1rem;
+  }
+
+  footer {
+    width: 50vw;
+    height: auto;
+    padding: 5vh 25vw;
+    line-height: 2rem;
+  }
+}

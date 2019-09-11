@@ -92,9 +92,7 @@ app.post('/upload', (req, res) => {
     errors.push('Keywords can\'t contain special characters aside from commas (,).');
   }
 
-  keywords = keywords.replace(' ,', ',');
-  keywords = keywords.replace(', ', ',');
-  keywords = keywords.replace(' , ', ',');
+  keywords = keywords.replace(/ ,|, | , /g, ',');
   keywords = keywords.toLowerCase();
 
   let query = "INSERT INTO items (image, contributor, time, keywords, description, isera) VALUES ('" + image + "','" + contributor + "','" + time + "','" + keywords + "','" + description + "'," + isEra + ")";
@@ -115,8 +113,9 @@ app.post('/upload', (req, res) => {
 
 function validate(input, isKeywords) {
   if(isKeywords) {
-    input = input.replace(',','');
+    input = input.replace(/,/g,'');
   }
+  console.log('Input: ',input);
   var regex = /^[A-Za-z0-9 ]+$/
   var isValid = regex.test(input);
   return isValid;

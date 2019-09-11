@@ -31,6 +31,10 @@ label {
   font: var(--primary-font);
 }
 
+label span {
+  color: red;
+}
+
 form {
   display: flex;
   flex-flow: column nowrap;

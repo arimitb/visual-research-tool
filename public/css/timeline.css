@@ -1,0 +1,41 @@
+:root {
+  --card-size: 10vw;
+}
+
+.page-container {
+  overflow: hidden;
+  height: 95vh;
+}
+
+.timeline-container {
+  min-width: 100%;
+  height: calc(85vh - 1rem);
+  margin-top: calc(10vh + 1rem);
+  padding-right: 15px;
+  padding-bottom: 30px;
+  overflow: scroll;
+  white-space: nowrap;
+}
+
+.time-period {
+  display: inline-block;
+  width: var(--card-size);
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.time-period-heading {
+  padding: 1rem;
+  font-weight: 700;
+  text-align: center;
+  border: var(--primary-border);
+}
+
+.db-item {
+  width: var(--card-size);
+  height: var(--card-size);
+  margin-top: 1rem;
+  background-image: url('https://picsum.photos/200');
+  background-size: cover;
+  border: var(--primary-border);
+}

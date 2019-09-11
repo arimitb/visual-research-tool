@@ -61,7 +61,7 @@ footer a:hover {
 .page-container {
   position: relative;
   min-height: 90vh;
-  padding-bottom: 10vh;
+  padding-bottom: 20vh;
   font: var(--primary-font);
   overflow: auto;
 }

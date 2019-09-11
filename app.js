@@ -54,6 +54,7 @@ app.get('/search', function(req, res) {
 });
 
 app.post('/upload', (req, res) => {
+  var errors = [];
   var image = req.body.image;
   var contributor = toTitleCase(req.body.contributor);
   var time = req.body.time;
@@ -61,28 +62,65 @@ app.post('/upload', (req, res) => {
   var description = req.body.description;
   var isEra = false;
 
-  console.log(time[time.length - 1]);
+  console.log('Image: ', image);
+  if(image == null || image == '') {
+    errors.push('Image is a compulsory field.');
+  }
+
+  if(time == null || time == '') {
+    errors.push('Time period is a compulsory field.');
+  }
+
+  if(!image.includes('png') && !image.includes('jpeg') && !image.includes('jpg')) {
+    errors.push('Image link must end with ".png", ".jpeg", or ".jpg".');
+  }
+
+  if(!validate(contributor)) {
+    errors.push('Contributor can\'t contain special characters.');
+  }
+
+  if(!validate(time)) {
+    errors.push('Time period can\'t contain special characters.');
+  }
 
   if(time[time.length - 1] == 's') {
     isEra = true;
   }
   time = parseInt(time, 10);
-  keywords = keywords.replace(' ', '');
+
+  if(!validate(keywords, true)) {
+    errors.push('Keywords can\'t contain special characters aside from commas (,).');
+  }
+
+  keywords = keywords.replace(' ,', ',');
+  keywords = keywords.replace(', ', ',');
+  keywords = keywords.replace(' , ', ',');
+  keywords = keywords.toLowerCase();
 
   let query = "INSERT INTO items (image, contributor, time, keywords, description, isera) VALUES ('" + image + "','" + contributor + "','" + time + "','" + keywords + "','" + description + "'," + isEra + ")";
 
-  db.none(query, [true])
-    .then(function(data) {
-      for(let row of res.rows) {
-        console.log(JSON.stringify(row));
-      }
-    })
-    .catch(function(err) {
-      console.error(err);
-    });
+  if(errors.length == 0) {
+    db.none(query, [true])
+      .then(function(data) {
+        console.log(JSON.stringify(data));
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+  }
 
+  res.send(errors);
   res.end();
 });
+
+function validate(input, isKeywords) {
+  if(isKeywords) {
+    input = input.replace(',','');
+  }
+  var regex = /^[A-Za-z0-9 ]+$/
+  var isValid = regex.test(input);
+  return isValid;
+}
 
 app.listen(port);
 

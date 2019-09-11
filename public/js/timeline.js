@@ -12,7 +12,7 @@ $(function() {
 
 function insertItems(rows) {
   for(let i = 0; i < rows.length; i++) {
-    var time = (rows[i].time + (rows[i].isEra ? 's' : ''));
+    var time = (rows[i].time + (rows[i].isera ? 's' : ''));
     if($('#' + time).length == 0) {
       $('.timeline-container').append(`
         <div id="` + time + `" class="time-period">
